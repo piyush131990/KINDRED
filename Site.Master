@@ -1,0 +1,119 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Kindred.MIT.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Kindred</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+   <style>
+       html {
+  scroll-behavior: smooth;
+}
+   </style>
+</head>
+<body class="w3-theme-l5" oncontextmenu="return false">
+    <form runat="server">
+       <%-- <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts
+            </Scripts>
+        </asp:ScriptManager>--%>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="Mainstyle/w3.css" rel="stylesheet" />
+<link href="Mainstyle/w3-theme-blue-grey.css" rel="stylesheet" />
+<link href="Mainstyle/family=Open+Sans.css" rel="stylesheet" />
+<link href="Mainstyle/font-awesome.min.css" rel="stylesheet" />
+
+<style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+</style>
+        <!-- Navbar -->
+<div class="w3-top">
+    <div runat="server" id="maindiv1" class="w3-bar w3-theme-d2 w3-left-align w3-large">
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>KINDRED</a>
+        </div>
+ <div runat="server" id="maindiv" class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="JournalUser.aspx" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>KINDRED</a>
+  <a href="EmergencyNumber.aspx" target="_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Emergency contact number"><i class="fa fa-ambulance"></i></a>
+  <a href="About.aspx" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="About"><i class="fa fa-info-circle"></i></a>
+  <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-button w3-padding-large" title="Show Comments"><i class="fa fa-envelope"></i><span class="w3-badge w3-right w3-small" style="background-color:#3a4b53"><%=commentnumber %></span></button>
+  <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+      <%=comments %>
+      </div>
+  </div>
+     <%--<a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Recent Comments"><i class="fa fa-envelope"></i></a>--%>
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button w3-padding-large" title="Friend Requests"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small" style="background-color:#3a4b53"><%=frndnumber %></span></button>     
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+        <%=frndaccept %>
+      
+    </div>
+  </div>
+     <asp:Button class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" id="btn_Logout" OnClick="LogOut_click" runat="server" Text="LOGOUT" />
+     
+ </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+  <a href="EmergencyNumber.aspx" class="w3-bar-item w3-button w3-padding-large">Emergency Number</a>
+  <a href="About.aspx" class="w3-bar-item w3-button w3-padding-large">About</a>
+  <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-button w3-padding-large" title="Show Comments"><i class="fa fa-envelope"></i><span class="w3-badge w3-right w3-small" style="background-color:#3a4b53"><%=commentnumber %></span></button>
+  <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+      <%=comments %>
+      </div>
+  </div>
+    <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button w3-padding-large" title="Friend Requests"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small" style="background-color:#3a4b53"><%=frndnumber %></span></button>     
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+        <%=frndaccept %>
+      
+    </div>
+  </div>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+</div>
+        <div class="w3-container w3-content" style="max-width:1400px;margin-top:40px;min-height:800px">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            
+        </div>
+        <footer class="w3-container w3-center w3-theme-d3 w3-padding-16">
+                <a target="_blank" style="color:white;font-weight:bold" href="EmergencyNumber.aspx">EMERGENCY CONTACT NUMBERS</a>
+            </footer>
+
+            <footer class="w3-container w3-center w3-theme-d5">
+                <p>Powered by <a href="Default.aspx" target="_blank">KINDRED &copy; <%: DateTime.Now.Year %></a></p>
+            </footer>
+</form>
+   
+</body>
+    
+</html>
